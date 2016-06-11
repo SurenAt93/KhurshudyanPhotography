@@ -28,6 +28,10 @@
           onLoad(img);
           delete img.onload; //release memory - suggested by John Hann
         };
+        var self = this;
+        img.onerror = function(err) {
+          onLoad(null);
+        };
         img.src = name;
       }
     },

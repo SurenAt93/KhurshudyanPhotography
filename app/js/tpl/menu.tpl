@@ -21,6 +21,13 @@
 	        <a value="about" class="menu_tabs_button">About My</a>
 	        <a value="contact" class="menu_tabs_button">Contact</a>
 	      </div>
+	      <div id="fb-share-button-style-main">
+					<div class="fb-share-button" 
+						data-href="http://khurshudyan.com" 
+						data-layout="button_count"
+						data-mobile_iframe="true">
+					</div>
+	      </div>
 	    </div>
 	  </div>
 	</div>

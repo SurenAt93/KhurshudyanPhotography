@@ -2,6 +2,8 @@ require({
   paths: {
     // libs
     'jquery':               '../vendor/jquery/jquery',
+    'jquery.mouse':         '../vendor/jquery/mousewheel',
+    'jquery.easing':        '../vendor/jquery/easing',
 
     'backbone':             '../vendor/backbone/backbone',
     'underscore':           '../vendor/underscore/underscore',
@@ -12,7 +14,9 @@ require({
     // Require.js components
     'require.text':         '../vendor/require/requrie_text',
     'image':                '../vendor/require/image',
-
+    // facebook sdk
+    'facebook':             '//connect.facebook.net/en_US/sdk',
+    'fb':                   'fb/fb',
     // Workflow
     'lazyLoader':           'workflow/lazyLoader',
     // Controller
@@ -46,10 +50,34 @@ require({
 
     'modernizr': {
       exports: 'Modernizr',
-    },  
+    },
+    'jquery.mouse': {
+      deps: ['jquery'],
+    },
+    'jquery.easing' : {
+      deps: ['jquery'],
+    }, 
+    shim: {
+    'facebook' : {
+      exports: 'FB'
+    }
+  },
   }
 });
 
+define('jquery.mousewheel',
+  [
+    'jquery',
+    'jquery.mouse',
+  ], function($) {
+    return $;
+  })
+
+
+// require fb sdk async
+require(['fb']);
+
+// require app
 requirejs(['lazyLoader'], function() {
   console.log('app is runing!');
 

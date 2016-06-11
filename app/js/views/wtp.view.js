@@ -59,45 +59,62 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, MainTpl) {
     },
 
     load_more_images: function(e) {
-      if(this.image_index < 31 ) {
-        this.$('.load_more_section').hide();
-        this.$('.preloader-anim').show();
-        this.images = [];
-        for(var i = this.image_index; i < (this.image_index + 10); i++) {
-          this.images.push('image!app/img/wtp/' + i + '.jpg');
-        }
-        this.image_index = i;
-        var self = this;
-        requirejs(
-        [
-          'require.text!tpl/wtp/' + this.image_index + '.tpl'        
-        ],
-        function(ImagesTpl) {
-          self.template = Handlebars.compile(ImagesTpl);
-          self.render();
-          requirejs(
-            self.images,
-            function(
-              img_001, img_002, img_003, img_004, img_005,
-              img_006, img_007, img_008, img_009, img_010
-            ) {
-              var img_arr = arguments;
-              setTimeout(function() {
-                for(var i = 0; i < 10; i++) {
-                  self.$(self.$('.image_container figure > div')
-                      [self.image_index + i - 11])
-                      .append(img_arr[i]);
-                }
-                Toucheffects();
-                this.$('.load_more_section').show();
-                this.$('.preloader-anim').hide();
-              }, 10);
-            }
-          );
-        });
-      } else {
-        this.$('.load_more').hide();
+      this.$('.load_more_section').hide();
+      this.$('.preloader-anim').show();
+      this.images = [];
+      for(var i = this.image_index; i < (this.image_index + 10); i++) {
+        this.images.push('image!app/img/wtp/' + i + '.jpg');
       }
+      this.image_index = i;
+      var self = this;
+      requirejs(
+      [
+        'require.text!tpl/wtp/' + this.image_index + '.tpl'        
+      ],
+      function(ImagesTpl) {
+        self.template = Handlebars.compile(ImagesTpl);
+        self.render();
+        requirejs(
+          self.images,
+          function(
+            img_001, img_002, img_003, img_004, img_005,
+            img_006, img_007, img_008, img_009, img_010
+          ) {
+            var img_arr = arguments;
+            for(var i = 0; i < 10; i++) {
+              if (img_arr[i]) {
+                self.$(self.$('.image_container figure > div')
+                    [self.image_index + i - 11])
+                    .append(img_arr[i]);
+              } else {
+                var null_images_index = self.image_index + i - 11;
+                var stack = null_images_index;
+                if(!self.isInteger(null_images_index)) {
+                  null_images_index /= 10;
+                  null_images_index = Math.ceil(null_images_index);
+                  null_images_index *= 10;
+                } else {
+                  null_images_index += 10;
+                }
+                for(var i = stack; i < null_images_index; i++) {
+                  self.$(self.$('.image_container li')[i]).hide();
+                }
+                self.$('.load_more_section').hide();
+                Toucheffects();
+                return;
+              }
+            }
+            Toucheffects();
+            this.$('.load_more_section').show();
+            this.$('.preloader-anim').hide();
+          }
+        );
+      });
     },
+
+    isInteger: function(num) {
+      return (num ^ 0) === num;
+    },
+    
   })
 })

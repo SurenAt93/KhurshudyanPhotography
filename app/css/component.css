@@ -31,6 +31,7 @@
 }
 
 .grid figcaption {
+	opacity: 0.8 !important;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -56,6 +57,7 @@
 	display: inline-block;
 	background: #ed4e6e;
 	color: #fff;
+	cursor: pointer;
 }
 
 /* Individual Caption Styles */
@@ -211,6 +213,7 @@
 }
 
 .cs-style-4 figcaption {
+	font-size: 82%;
 	height: 100%;
 	width: 50%;
 	opacity: 0;

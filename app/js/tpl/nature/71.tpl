@@ -1,21 +1,4 @@
-<!-- 1 -->
-<li>
-  <figure>
-    <div></div>
-    <figcaption>
-      <h3>By Khurshudyan Photography</h3>
-      <span>About</span>
-      <a>Take a look</a>
-      <div class="fb-share-button-style-photo">
-        <div class="fb-share-button" 
-          data-href="http://khurshudyan.com#portaits/1" 
-          data-layout="button_count">
-        </div>
-      </div>
-    </figcaption>
-  </figure>
-</li>
-<!-- 2 -->
+<!-- 61 -->
 <li>
   <figure>
     <div></div>
@@ -26,7 +9,7 @@
     </figcaption>
   </figure>
 </li>
-<!-- 3 -->
+<!-- 62 -->
 <li>
   <figure>
     <div></div>
@@ -37,7 +20,7 @@
     </figcaption>
   </figure>
 </li>
-<!-- 4 -->
+<!-- 63 -->
 <li>
   <figure>
     <div></div>
@@ -48,7 +31,7 @@
     </figcaption>
   </figure>
 </li>
-<!-- 5 -->
+<!-- 64 -->
 <li>
   <figure>
     <div></div>
@@ -59,7 +42,7 @@
     </figcaption>
   </figure>
 </li>
-<!-- 6 -->
+<!-- 65 -->
 <li>
   <figure>
     <div></div>
@@ -70,7 +53,7 @@
     </figcaption>
   </figure>
 </li>
-<!-- 7 -->
+<!-- 66 -->
 <li>
   <figure>
     <div></div>
@@ -81,7 +64,7 @@
     </figcaption>
   </figure>
 </li>
-<!-- 8 -->
+<!-- 67 -->
 <li>
   <figure>
     <div></div>
@@ -92,7 +75,7 @@
     </figcaption>
   </figure>
 </li>
-<!-- 9 -->
+<!-- 68 -->
 <li>
   <figure>
     <div></div>
@@ -103,7 +86,18 @@
     </figcaption>
   </figure>
 </li>
-<!-- 10 -->
+<!-- 69 -->
+<li>
+  <figure>
+    <div></div>
+    <figcaption>
+      <h3>By Khurshudyan Photography</h3>
+      <span>About</span>
+      <a>Take a look</a>
+    </figcaption>
+  </figure>
+</li>
+<!-- 70 -->
 <li>
   <figure>
     <div></div>

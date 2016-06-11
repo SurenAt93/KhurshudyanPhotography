@@ -37,7 +37,7 @@ function(Backbone) {
       },
 
       open_portraits: function() {
-        if($('#portraits .image_container').html()) {
+        if(/*$('#portraits .image_container').html()*/false) {
           $('#content').children().hide();
           $('#portraits').fadeIn(150);
         } else {
