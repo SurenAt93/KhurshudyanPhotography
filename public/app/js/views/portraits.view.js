@@ -19,6 +19,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, MainTpl) {
     },
 
     initialize: function() {
+      $('meta[name=image]').attr('content', 'app/img/main.jpg');
       var self = this;
       self.images = [];
       for(var i = 1; i < 11; i++) {
