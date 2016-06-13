@@ -1,6 +1,9 @@
 {
   "name": "khurshudyan.com",
   "version": "1.0.0",
+  "engines": {
+    "node": "4.1.1"
+  },
   "description": "creative photography app",
   "main": "app.js",
   "dependencies": {
@@ -13,7 +16,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+      "start": "node app.js"
   },
   "repository": {
     "type": "git",
