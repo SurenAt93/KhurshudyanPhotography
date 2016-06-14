@@ -8,7 +8,7 @@
       <a>Take a look</a>
       <div class="fb-share-button-style-photo">
         <div class="fb-share-button" 
-          data-href="http://khurshudyan.com#portaits" 
+          data-href="http://khurshudyan.com/portaits" 
           data-layout="button_count"
 >
         </div>
