@@ -38,9 +38,6 @@ function(Backbone) {
       },
 
       open_portraits: function() {
-        $('meta[name=image]').attr('content', 'app/img/main.jpg');
-        $('meta[name=img_height]').attr('content', '316');
-        $('meta[name=img_width]').attr('content', '477');
         if($('#portraits .image_container').html()) {
           $('#content').children().hide();
           $('#portraits').fadeIn(150);
