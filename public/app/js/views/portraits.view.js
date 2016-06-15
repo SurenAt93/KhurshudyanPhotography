@@ -7,6 +7,7 @@ define(
   'modernizr',
   'toucheffects',
   'require.text!tpl/portraits/11.tpl',
+  'fb',
 ],
 function($, Backbone, _, Handlebars, Modernizr, Toucheffects, MainTpl) {
   return Backbone.View.extend({
@@ -24,6 +25,9 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, MainTpl) {
       for(var i = 1; i < 11; i++) {
         self.images.push('image!app/img/portraits/' + i + '.jpg');
       }
+      $.get( "/get_portraits_images_count", function(data) {
+        self.images_count = data.img_count;
+      });
       self.image_index = i;
       this.render();
       requirejs(

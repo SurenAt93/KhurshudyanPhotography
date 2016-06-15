@@ -14,9 +14,10 @@ function($, Backbone, _, Dispatcher) {
     },
 
     routes: {
-      '':       'start',
-      '/':      'start',
-      '*tab':   'open_tab',
+      '':             'start',
+      '/':            'start',
+      '*tab':         'open_tab',
+      '*tab/img_num': 'open_image',
     },
 
     start: function() {
@@ -24,7 +25,10 @@ function($, Backbone, _, Dispatcher) {
     },
 
     open_tab: function(tab) {
-      $('meta[name=image]').attr('content', 'app/img/main.jpg');
+      Dispatcher.trigger('open:' + tab);
+    },
+
+    open_image: function(tab, open_image) {
       Dispatcher.trigger('open:' + tab);
     }
   });

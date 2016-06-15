@@ -496,6 +496,5 @@ transform: translateY(-4px) rotate(0deg);
 }
 
 .fb-share-button-style-photo {
-  position: absolute;
   bottom: 23px;
 }

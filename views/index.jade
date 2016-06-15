@@ -2,19 +2,19 @@ doctype html
 html
   head
     title KhurshudyanPhoto
-    link(rel='stylesheet', type='text/css', href='app/css/main.css')
-    link(rel='stylesheet', type='text/css', href='app/css/default.css')
-    link(rel='stylesheet', type='text/css', href='app/css/component.css')
-    link(rel='stylesheet', type='text/css', href='app/css/load_more.css')
+    link(rel='stylesheet', type='text/css', href='/app/css/main.css')
+    link(rel='stylesheet', type='text/css', href='/app/css/default.css')
+    link(rel='stylesheet', type='text/css', href='/app/css/component.css')
+    link(rel='stylesheet', type='text/css', href='/app/css/load_more.css')
     // for fb analitics
-    meta(property='og:url', content='http://khurshudyan.com#{originalUrl}')
+    meta(property='og:url', content='http://khurshudyan.com')
     meta(property='og:type', content='website')
     meta(property='og:title', content='KhurshudyanPhoto')
     meta(property='og:updated_time', content='1465679659')
     meta(property='fb:admins', content='100001332895153')
-    meta(property='og:image', name='image', content="#{fb_img_url}")
+    meta(property='og:image', name='image', content="/app/img/fb_share.jpg")
     meta(property='fb:app_id', content='138460513240067')
-    script(type='text/javascript', data-main='app/js/app.js', src='app/vendor/require/require.js')
+    script(type='text/javascript', data-main='/app/js/app.js', src='/app/vendor/require/require.js')
   body
     #loading
       #loading-center
@@ -32,7 +32,7 @@ html
     #content
       #home
         //
-          <video poster="app/img/main.jpg" id="bgvid" >
+          <video poster="/app/img/main.jpg" id="bgvid" >
           <source src="app/video/video.mp4" type="video/mp4">
           <source src="app/video/main.ogv" type="video/ogg">
           Your browser does not support the video tag.
