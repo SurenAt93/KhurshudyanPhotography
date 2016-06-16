@@ -91,7 +91,7 @@ requirejs(['lazyLoader'], function() {
     'create.router',
   ],
   function($, Backbone, Test) {
-    Backbone.history.start({pushState: true});
+    Backbone.history.start();
     requirejs(
     [
       'image!app/img/main.jpg',

@@ -16,8 +16,8 @@ function($, Backbone, _, Dispatcher) {
     routes: {
       '':             'start',
       '/':            'start',
-      '*tab':         'open_tab',
-      '*tab/img_num': 'open_image',
+      '/tab':         'open_tab',
+      '/tab/img_num': 'open_image',
     },
 
     start: function() {

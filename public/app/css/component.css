@@ -215,7 +215,7 @@
 .cs-style-4 figcaption {
 	font-size: 82%;
 	height: 100%;
-	width: 50%;
+	width: 75%;
 	opacity: 0;
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
@@ -245,7 +245,14 @@
 .cs-style-4 figcaption a {
 	position: absolute;
 	bottom: 20px;
-	right: 20px;
+}
+
+.cs-style-4 figcaption a.zoom_image {
+	right: 15px;
+}
+.cs-style-4 figcaption a.fb-share-button-style {
+	left: 15px;
+	background-color: #3B5998;
 }
 
 /* Caption Style 5 */

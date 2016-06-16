@@ -152,7 +152,6 @@ function(Backbone) {
           [
             'image!app/img/contacts/main_contacts.jpg'
           ], function(ContactImg) {
-            $('#bgvid')[0].pause();
             $('#content').children().hide();
             $('#contact')
               .css('background-image',
