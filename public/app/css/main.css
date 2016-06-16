@@ -21,10 +21,10 @@ body {
   /* overflow-x: hidden; */
   /* overflow-y: overlay; */
   /* width: 30em; */
+  height: 100%;
   overflow-x: hidden;
   white-space: nowrap;
   padding-top: 10%;
-  padding-bottom: 10%;
   padding-right: 200px;
   padding-left: 200px;
   -webkit-touch-callout: none; /* iOS Safari */
@@ -87,6 +87,7 @@ video {
   position: absolute;
 }
 #content > div {
+  text-align: center;
   background: no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;

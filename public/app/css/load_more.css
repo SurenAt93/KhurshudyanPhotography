@@ -1,8 +1,11 @@
 #content .load_more_section {
+  position: absolute;
+  display: inline-block;
   text-align: center;
   padding-bottom: 20px;
   padding-top: 20px;
   cursor: pointer;
+  bottom: 25px;
 }
 
 .load_more_section nav a {

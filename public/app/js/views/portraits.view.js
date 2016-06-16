@@ -50,7 +50,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
 
     load_more_images: function(e) {
       this.$('.load_more_section').hide();
-      this.$('.preloader-anim').show();
+      this.$('.preloader-anim').css('display', 'inline-block');;
       var self = this;
       var images_count;
       if (this.image_index + 10 <= this.images_count) {
@@ -77,7 +77,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
           self.image_index++;
         }
         Toucheffects();
-        this.$('.load_more_section').show();
+        this.$('.load_more_section').css('display', 'inline-block');;
         this.$('.preloader-anim').hide();
         if (self.end_flag) {
           this.$('.load_more_section').hide();
