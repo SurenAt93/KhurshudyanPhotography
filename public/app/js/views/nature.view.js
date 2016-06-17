@@ -110,6 +110,12 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
         $('#gallery #left_img').off('click');
         $('#gallery #right_img').off('click');
       }
+      if(key_code == 37) {
+        $('#gallery #left_img').trigger('click');
+      }
+      if(key_code == 39) {
+        $('#gallery #right_img').trigger('click'); 
+      }
     },
 
     get_right_slide: function(e) {
