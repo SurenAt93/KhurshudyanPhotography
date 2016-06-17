@@ -1,11 +1,13 @@
 #content .load_more_section {
+  left: 50%;
+  margin-left: -95.5px;
   position: absolute;
   display: inline-block;
   text-align: center;
   padding-bottom: 20px;
   padding-top: 20px;
   cursor: pointer;
-  bottom: 25px;
+  bottom: 77px;
 }
 
 .load_more_section nav a {
