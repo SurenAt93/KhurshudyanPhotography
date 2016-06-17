@@ -134,8 +134,8 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, WtpTpl) {
           img.attr('src', 'app/img/wtp/' + (self.images_count - 1) + '.jpg')
             .show();
           $(e.target).hide();
+          $('#gallery_preloader').fadeOut(110);
         }
-        $('#gallery_preloader').fadeOut(110);
       });
     },
 
@@ -164,8 +164,8 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, WtpTpl) {
           img.attr('src', 'app/img/wtp/' + 1 + '.jpg')
             .show();
           $(e.target).hide();
+          $('#gallery_preloader').fadeOut(110);
         }
-        $('#gallery_preloader').fadeOut(110);
       });
     }
   })

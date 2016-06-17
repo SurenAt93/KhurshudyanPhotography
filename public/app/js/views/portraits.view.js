@@ -135,8 +135,8 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
           img.attr('src', 'app/img/portraits/' + (self.images_count - 1) + '.jpg')
             .show();
           $(e.target).hide();
+          $('#gallery_preloader').fadeOut(110);
         }
-        $('#gallery_preloader').fadeOut(110);
       });
     },
 
@@ -165,8 +165,8 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
           img.attr('src', 'app/img/portraits/' + 1 + '.jpg')
             .show();
           $(e.target).hide();
+          $('#gallery_preloader').fadeOut(110);
         }
-        $('#gallery_preloader').fadeOut(110);
       });
     }
   })
