@@ -1,4 +1,5 @@
 require({
+  waitSeconds: 67,
   paths: {
     // libs
     'jquery':               '../vendor/jquery/jquery',

@@ -141,11 +141,23 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
     },
 
     get_left_slide: function(e) {
+      $('#gallery_preloader').fadeIn(110);
       var img = $(e.target).parent().find('img');
       var self = this;
       img.fadeOut(420, function() {
         if(self.slider_index > 1) {
           self.slider_index--;
+          var img_url = 'app/img/portraits/' + self.slider_index + '.jpg';
+          requirejs(
+          [
+            'image!' + img_url,
+          ],
+          function(test_img) {
+            img.attr('src', img_url);
+            $('#gallery_preloader').fadeOut(110);
+            img.fadeIn(420);
+            $('#gallery #left_img').show();
+          });
           img.attr('src', 'app/img/portraits/' + self.slider_index + '.jpg');
           img.fadeIn(420);
           $('#gallery #right_img').show();
@@ -154,6 +166,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
             .show();
           $(e.target).hide();
         }
+        $('#gallery_preloader').fadeOut(110);
       });
     }
   })
