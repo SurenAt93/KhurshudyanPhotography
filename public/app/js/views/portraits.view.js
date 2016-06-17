@@ -14,8 +14,8 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
     el: '#portraits',
     template: Handlebars.compile(PortraitsTpl),
     events: {
-      'click .load_more': 'load_more_images',
-      'click li a':       'zoom_image',
+      'click .load_more':       'load_more_images',
+      'click li a':             'zoom_image',
     },
 
     initialize: function() {
@@ -24,6 +24,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
       this.image_index = 1;
       this.images = [];
       this.end_flag = false;
+      this.slider_index = 0;
       requirejs(
       [
         'image!app/img/portraits/main.jpg'
@@ -36,7 +37,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
         self.images_count = data.img_count;
         self.load_more_images();
         self.$('.image_container').mousewheel(function(e, delta) {
-          this.scrollLeft -= (delta * 30);
+          this.scrollLeft -= (delta * 80);
           e.preventDefault();
         });
       });
@@ -93,8 +94,12 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
                       .find('img')).attr('src');
       $('#gallery').fadeIn(200);
       $('#gallery_img').attr('src', img_src);
+      this.slider_index = this.$(e.target).attr('name');
       $(document).bind('keydown', _.bind(this.hide_gallery, this));
+      // gallery events
       $('#close_gallery').bind('click', _.bind(this.hide_gallery, this));
+      $('#gallery #left_img').bind('click', _.bind(this.get_left_slide, this));
+      $('#gallery #right_img').bind('click', _.bind(this.get_right_slide, this));
     },
 
     hide_gallery: function(e) {
@@ -102,8 +107,54 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
       if(key_code == 27 || $(e.target).attr('id') == 'close_gallery') {
         $('#gallery').hide();
         $(document).off('keydown');
+        $('#close_gallery').off('click');
+        $('#gallery #left_img').off('click');
+        $('#gallery #right_img').off('click');
       }
     },
 
+    get_right_slide: function(e) {
+      $('#gallery_preloader').fadeIn(110);
+      var img = $(e.target).parent().find('img');
+      var self = this;
+      img.fadeOut(420, function() {
+        if(self.slider_index < (self.images_count - 1)) {
+          self.slider_index++;
+          var img_url = 'app/img/portraits/' + self.slider_index + '.jpg';
+          requirejs(
+          [
+            'image!' + img_url,
+          ],
+          function(test_img) {
+            img.attr('src', img_url);
+            $('#gallery_preloader').fadeOut(110);
+            img.fadeIn(420);
+            $('#gallery #left_img').show();
+          });
+        } else {
+          img.attr('src', 'app/img/portraits/' + (self.images_count - 1) + '.jpg')
+            .show();
+          $(e.target).hide();
+        }
+        $('#gallery_preloader').fadeOut(110);
+      });
+    },
+
+    get_left_slide: function(e) {
+      var img = $(e.target).parent().find('img');
+      var self = this;
+      img.fadeOut(420, function() {
+        if(self.slider_index > 1) {
+          self.slider_index--;
+          img.attr('src', 'app/img/portraits/' + self.slider_index + '.jpg');
+          img.fadeIn(420);
+          $('#gallery #right_img').show();
+        } else {
+          img.attr('src', 'app/img/portraits/' + 1 + '.jpg')
+            .show();
+          $(e.target).hide();
+        }
+      });
+    }
   })
 })
