@@ -24,8 +24,8 @@ function($, Backbone, _, Handlebars, HomeTpl) {
       [
         'image!app/img/portraits/3.jpg',
         'image!app/img/portraits/38.jpg',
-        'image!app/img/commercial/7.jpg',
-        'image!app/img/nature/main.jpg',
+        'image!app/img/commercial/21.jpg',
+        'image!app/img/nature/44.jpg',
         'image!app/img/wtp/16.jpg',
         'image!app/img/wtp/37.jpg',
       ],
