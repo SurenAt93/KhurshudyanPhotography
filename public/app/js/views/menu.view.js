@@ -17,7 +17,6 @@ function($, Backbone, Handlebars, Dispatcher, MenuTpl) {
 
     initialize: function() {
       this.render();
-      Dispatcher.trigger('open:home');
     },
 
     render: function() {

@@ -22,6 +22,7 @@ function($, Backbone, _, Dispatcher) {
 
     start: function() {
       console.log('start!!!');
+      Dispatcher.trigger('open:home');
     },
 
     open_tab: function(tab) {

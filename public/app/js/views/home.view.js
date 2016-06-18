@@ -3,35 +3,43 @@ define(
   'jquery',
   'backbone',
   'underscore',
+  'handlebars',
+  'require.text!tpl/home.tpl',  
 ],
-function($, Backbone, _) {
+function($, Backbone, _, Handlebars, HomeTpl) {
 
   return Backbone.View.extend({
 
     el: '#home',
+    template: Handlebars.compile(HomeTpl),
 
     events: {
       'click #play_video': 'play_video',
     },
 
     initialize: function() {
+      this.render();
       var self = this;
-      this.$('video').bind('ended', _.bind(self.reload_video, this));
+      requirejs(
+      [
+        'image!app/img/portraits/3.jpg',
+        'image!app/img/portraits/38.jpg',
+        'image!app/img/commercial/7.jpg',
+        'image!app/img/nature/main.jpg',
+        'image!app/img/wtp/16.jpg',
+        'image!app/img/wtp/37.jpg',
+      ],
+      function(img1, img2, img3, img4, img5, img6) {
+        $('head').append('<link rel="stylesheet" type="text/css" href="/app/css/main_slide.css">');
+        setTimeout(function() {
+          $('#loading').fadeOut(400);
+        }, 350);
+      });
     },
 
-    play_video: function(e) {
-      this.$('video')[0].play();
-      this.$('#play_video').hide();
+    render: function() {
+      this.$el.html(this.template({}));
     },
-
-    reload_video: function(e) {
-      var src = this.$('video > source').attr('src');
-      this.$('video > source').attr('src', '');
-      this.$('video > source').attr('src', src);
-      this.$('video')[0].load();
-      this.$('#play_video').fadeIn(200);
-    }
-
   })
 
 })

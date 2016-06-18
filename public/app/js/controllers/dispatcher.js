@@ -10,21 +10,20 @@ function(Backbone) {
     open_menu_tabs: {
 
       open_home: function() {
-        if(/*$('#home').html()*/false) {
+        if($('#home').html()) {
           $('#content').children().hide();
           $('#home').fadeIn(150);
         } else {
+          $('#loading').fadeIn(500);
           require(
           [
             'create.home.view',
           ], function(HomeView) {
-            console.log(HomeView);
             HomeView
               .then(
                 function(homeView) {
                   $('#content').children().hide();
                   $('#home').fadeIn(150);
-                  $('#play_video').show();
                 },
                 function(err) {
                   console.log(err);

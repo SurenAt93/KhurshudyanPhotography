@@ -5,6 +5,7 @@ html
     link(rel='stylesheet', type='text/css', href='/app/css/main.css')
     link(rel='stylesheet', type='text/css', href='/app/css/default.css')
     link(rel='stylesheet', type='text/css', href='/app/css/component.css')
+    link(rel='stylesheet', type='text/css', href='/app/css/main_slide_main.css')
     link(rel='stylesheet', type='text/css', href='/app/css/load_more.css')
     // for fb analitics
     meta(property='og:url', content='http://khurshudyan.com')
@@ -16,6 +17,7 @@ html
     meta(property='fb:app_id', content='138460513240067')
     script(type='text/javascript', data-main='/app/js/app.js', src='/app/vendor/require/require.js')
   body
+    //- .container
     #loading
       //- #loading-center
       //-   #loading-center-absolute
@@ -32,15 +34,6 @@ html
       #main_preloader
     #content
       #home
-        //
-          <video poster="/app/img/main.jpg" id="bgvid" >
-          <source src="app/video/video.mp4" type="video/mp4">
-          <source src="app/video/main.ogv" type="video/ogg">
-          Your browser does not support the video tag.
-          </video>
-          <span id="play_video">
-          <span class="play_button"></span>
-          </span>
       #portraits
         ul.image_container.grid.cs-style-4
         .load_more_section

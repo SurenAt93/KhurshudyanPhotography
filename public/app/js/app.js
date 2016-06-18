@@ -15,9 +15,6 @@ require({
     // Require.js components
     'require.text':         '../vendor/require/requrie_text',
     'image':                '../vendor/require/image',
-    // facebook sdk
-    'facebook':             '//connect.facebook.net/en_US/sdk',
-    'fb':                   'fb/fb',
     // Workflow
     'lazyLoader':           'workflow/lazyLoader',
     // Controller
@@ -57,13 +54,8 @@ require({
     },
     'jquery.easing' : {
       deps: ['jquery'],
-    }, 
-    shim: {
-    'facebook' : {
-      exports: 'FB'
-    }
+    },
   },
-  }
 });
 
 define('jquery.mousewheel',
@@ -73,10 +65,6 @@ define('jquery.mousewheel',
   ], function($) {
     return $;
   })
-
-
-// require fb sdk async
-require(['fb']);
 
 // require app
 requirejs(['lazyLoader'], function() {
