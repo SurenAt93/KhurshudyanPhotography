@@ -14,7 +14,7 @@ function(Backbone) {
           $('#content').children().hide();
           $('#home').fadeIn(150);
         } else {
-          $('#loading').fadeIn(500);
+          $('#loading').fadeIn(400);
           require(
           [
             'create.home.view',

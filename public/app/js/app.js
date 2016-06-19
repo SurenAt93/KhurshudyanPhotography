@@ -79,16 +79,7 @@ requirejs(['lazyLoader'], function() {
     'create.menu.view',
     'create.router',
   ],
-  function($, Backbone, Test) {
+  function($, Backbone) {
     Backbone.history.start();
-    requirejs(
-    [
-      'image!app/img/main.jpg',
-    ],
-    function(test_image) {
-      setTimeout(function() {
-        $('#loading').fadeOut(500);
-      }, 0.5);
-    });
   });
 });

@@ -31,9 +31,7 @@ function($, Backbone, _, Handlebars, HomeTpl) {
       ],
       function(img1, img2, img3, img4, img5, img6) {
         $('head').append('<link rel="stylesheet" type="text/css" href="/app/css/main_slide.css">');
-        setTimeout(function() {
-          $('#loading').fadeOut(400);
-        }, 350);
+        $('#loading').fadeOut(400);
       });
     },
 
