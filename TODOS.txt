@@ -1,0 +1,8 @@
+// TODOS: SUREN
+
+1: Change loader sizes
+2: Change screen resolution
+3: Change responsive design for the all screens
+4: Change Copyright text design and background like http://www.achtenburg.am/
+5: Change Copyright text to Khurshudyan Photograpy
+6: 

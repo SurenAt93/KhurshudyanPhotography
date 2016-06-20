@@ -1,3 +1,4 @@
+console.time('start');
 require({
   waitSeconds: 67,
   paths: {
@@ -74,10 +75,10 @@ requirejs(['lazyLoader'], function() {
   [
     'jquery',
     'backbone',
+    'create.router',
     'create.dispatcher',
     'create.app.view',
     'create.menu.view',
-    'create.router',
   ],
   function($, Backbone) {
     Backbone.history.start();

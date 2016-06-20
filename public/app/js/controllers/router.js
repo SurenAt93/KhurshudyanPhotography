@@ -22,6 +22,7 @@ function($, Backbone, _, Dispatcher) {
 
     start: function() {
       console.log('start!!!');
+      console.timeEnd('start');
       Dispatcher.trigger('open:home');
     },
 

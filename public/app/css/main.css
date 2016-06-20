@@ -216,7 +216,7 @@ a.menu_tabs_button {
 /*menu-animation*/
 .wrapper {
   position: fixed;
-  margin-left: -400px;
+  margin-left: -150px;
   transition-duration: 1s;
 }
 .remove-margin {
@@ -262,7 +262,7 @@ a.menu_tabs_button {
   pointer-events: none;
 }
 .mobile-inner{
-  width: 550px;
+  width: 202px;
   background-color: #fafafa;
   position: relative;
 }
@@ -590,11 +590,12 @@ transform: translateY(-4px) rotate(0deg);
 /* copyright */
 
 #copyright {
+  font-family: "helvetica neue",Helvetica, Arial,Verdana,sans-serif;
   line-height: 0.4;
-  width: 326px;
+  width: 520px;
   text-align: center;
   left: 50%;
-  margin-left: -163px;
+  margin-left: -260px;
   background-color: black;
   position: absolute;
   bottom: -17px;
@@ -605,8 +606,12 @@ transform: translateY(-4px) rotate(0deg);
   padding: 10px;
 }
 
-#copyright p:first-child {
-  margin: 0; 
+#copyright p {
+  text-transform: uppercase;
+  margin-top: 0;
+}
+#copyright a {
+  color: #eee;
 }
 
 /*@media(min-width:768px) {

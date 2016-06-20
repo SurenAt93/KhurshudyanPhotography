@@ -61,7 +61,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
       }
       self.images = [];
       for (var i = this.image_index; i < images_count + this.image_index; i++) {
-        self.images.push('image!app/img/portraits/' + i + '.jpg');
+        self.images.push('image!app/img/portraits/' + i + '.min.jpg');
       }
       if (self.images.length < 10) {
         self.end_flag = true;

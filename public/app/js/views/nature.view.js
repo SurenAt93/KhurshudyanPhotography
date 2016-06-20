@@ -61,7 +61,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
       }
       self.images = [];
       for (var i = this.image_index; i < images_count + this.image_index; i++) {
-        self.images.push('image!app/img/nature/' + i + '.jpg');
+        self.images.push('image!app/img/nature/' + i + '.min.jpg');
       }
       if (self.images.length < 10) {
         self.end_flag = true;
@@ -90,15 +90,25 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
     },
 
     zoom_image: function(e) {
+      var self = this;
       var img_src = $($(e.target).parents('figure')
                       .find('img')).attr('src');
+      var img_src = img_src.substr(0, img_src.length - 8) + '.jpg';
+      $('#gallery_img').attr('src', '');
       $('#gallery').fadeIn(200);
-      $('#gallery_img').attr('src', img_src);
-      $(document).bind('keydown', _.bind(this.hide_gallery, this));
-      $('#close_gallery').bind('click', _.bind(this.hide_gallery, this));
-      // gallery events
-      $('#gallery #left_img').bind('click', _.bind(this.get_left_slide, this));
-      $('#gallery #right_img').bind('click', _.bind(this.get_right_slide, this));
+      $('#gallery_preloader').fadeIn(110);
+      require(
+      [
+        'image!' + img_src,
+      ], function() {
+        $('#gallery_img').attr('src', img_src);
+        $('#gallery_preloader').fadeOut(110);
+        $(document).bind('keydown', _.bind(self.hide_gallery, self));
+        $('#close_gallery').bind('click', _.bind(self.hide_gallery, self));
+        // gallery events
+        $('#gallery #left_img').bind('click', _.bind(self.get_left_slide, self));
+        $('#gallery #right_img').bind('click', _.bind(self.get_right_slide, self));
+      });
     },
 
     hide_gallery: function(e) {
