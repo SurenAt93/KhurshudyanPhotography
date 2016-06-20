@@ -520,34 +520,34 @@ transform: translateY(-4px) rotate(0deg);
 }
 
 #main_preloader {
-  width: 300px;
-  height: 300px;
-  border-radius: 150px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
   top: 50%;
   left: 50%;
-  margin-top: -150px;
-  margin-left: -150px;
+  margin-top: -50px;
+  margin-left: -50px;
   border-color: #001f3f;
 }
 #gallery #gallery_preloader {
   display: none;
-  width: 200px;
+  width: 80px;
   border-left: 3px solid #FF4136;
   border-right: 3px solid #FF4136;
-  height: 200px;
+  height: 80px;
   left: 50%;
   top: 50%;
-  margin-top: -100px;
-  margin-left: -100px;
-  border-radius: 100px;
+  margin-top: -40px;
+  margin-left: -40px;
+  border-radius: 40px;
 }
 
 #gallery #gallery_preloader, #main_preloader {
   position: absolute;
   border-top: 3px solid;
   border-bottom: 3px solid;
-  -webkit-animation: spiner 1.5s linear infinite;
-          animation: spiner 1.5s linear infinite; 
+  -webkit-animation: spiner 0.5s linear infinite;
+          animation: spiner 0.5s linear infinite; 
 }
 
 
