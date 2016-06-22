@@ -87,8 +87,12 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
         images_count = this.images_count - this.image_index;
       }
       self.images = [];
+      self.big_images = [];
       for (var i = this.image_index; i < images_count + this.image_index; i++) {
         self.images.push('image!app/img/nature/' + i + '.min.jpg');
+      }
+      for (var i = this.image_index; i < images_count + this.image_index; i++) {
+        self.big_images.push('image!app/img/nature/' + i + '.jpg');
       }
       if (self.images.length < 10) {
         self.end_flag = true;
@@ -99,6 +103,33 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
         img_001, img_002, img_003, img_004, img_005,
         img_006, img_007, img_008, img_009, img_010
       ) {
+        // preload images
+        require(
+        [
+          self.big_images[0],
+          self.big_images[1]
+        ],
+        function() {
+          require(
+          [
+            self.big_images[2],
+            self.big_images[3],
+            self.big_images[4],
+            self.big_images[5]
+          ],
+          function() {
+            require(
+            [
+              self.big_images[6],
+              self.big_images[7],
+              self.big_images[8],
+              self.big_images[9]
+            ],
+            function() {
+              // all images loaded
+            });
+          });
+        });
         var img_arr = arguments;
         for (var i = 0; i < img_arr.length; i++) {
           self.render(img_arr[i], self.image_index);
