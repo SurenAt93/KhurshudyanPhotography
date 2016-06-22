@@ -63,6 +63,7 @@ define('jquery.mousewheel',
   [
     'jquery',
     'jquery.mouse',
+    'jquery.easing',
   ], function($) {
     return $;
   })

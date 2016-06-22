@@ -1,7 +1,7 @@
 <li>
   <figure>
-    <div></div>
-    <figcaption>
+    <div class="img_sec"></div>
+    <!-- <figcaption>
       <h3>By Khurshudyan Photography</h3>
       <a class="zoom_image">Zoom</a>
       <div class="fb-share-button-style-photo">
@@ -14,6 +14,6 @@
           Share on Facebook
         </a>
       </div>
-    </figcaption>
+    </figcaption> -->
   </figure>
 </li>

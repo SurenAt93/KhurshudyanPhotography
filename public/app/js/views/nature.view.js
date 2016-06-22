@@ -14,8 +14,31 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
     el: '#nature',
     template: Handlebars.compile(NatureTpl),
     events: {
-      'click .load_more': 'load_more_images',
-      'click li a':       'zoom_image',
+      'click .load_more':   'load_more_images',
+      'click li a':         'zoom_image',
+      'click .active_item': 'zoom_image',
+      'click img':           'pre_zoom_image',
+    },
+
+    pre_zoom_image: function(e) {
+      var scroll_path;
+      console.log(this.$(this.$(e.target)).attr('name'), this.$('img.active_item').attr('name'));
+      if (this.$('.image_container').scrollLeft() != 0) {
+        if (this.$(this.$(e.target)).attr('name') > this.$('img.active_item').attr('name')) {
+          scroll_path = this.$(this.$(e.target)).width() +
+                        this.$('.image_container').scrollLeft();
+        } else {
+          scroll_path = this.$('.image_container').scrollLeft() -
+                          this.$(this.$(e.target)).width();
+        }
+        this.$('.image_container').animate({
+          scrollLeft: scroll_path 
+        }, 550, 'easeOutSine');
+      } else {
+        this.$('.image_container').scrollLeft(1);
+      }
+      this.$('.active_item').removeClass('active_item');
+      this.$(e.target).addClass('active_item').parent().addClass('active_item');
     },
 
     initialize: function() {
@@ -37,13 +60,17 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
         self.images_count = data.img_count;
         self.load_more_images();
         self.$('.image_container').mousewheel(function(e, delta) {
-          this.scrollLeft -= (delta * 30);
+          this.scrollLeft -= (delta * 80);
+          // self.$('.active_item').removeClass('active_item')
+          //     .parents('li').next().find('img').addClass('active_item')
+          //     .parent().addClass('active_item');
           e.preventDefault();
         });
       });
     },
 
     render: function(img, image_index) {
+      img.setAttribute('name', image_index);
       this.$('.image_container').append(this.template({image_index}));
       this.$(this.$('.image_container figure > div')[image_index - 1])
           .html(img);
@@ -73,10 +100,11 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
         img_006, img_007, img_008, img_009, img_010
       ) {
         var img_arr = arguments;
-        for(var i = 0; i < img_arr.length; i++) {
+        for (var i = 0; i < img_arr.length; i++) {
           self.render(img_arr[i], self.image_index);
           self.image_index++;
         }
+        self.$(self.$('img')[2]).addClass('active_item').parent().addClass('active_item');
         Toucheffects();
         this.$('.load_more_section').css('display', 'inline-block');;
         this.$('.preloader-anim').hide();
