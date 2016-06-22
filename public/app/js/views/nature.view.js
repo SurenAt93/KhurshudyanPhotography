@@ -17,7 +17,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
       'click .load_more':   'load_more_images',
       'click li a':         'zoom_image',
       'click .active_item': 'zoom_image',
-      'click img':           'pre_zoom_image',
+      'click img':          'pre_zoom_image',
     },
 
     pre_zoom_image: function(e) {
@@ -137,6 +137,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
         $('#gallery #left_img').bind('click', _.bind(self.get_left_slide, self));
         $('#gallery #right_img').bind('click', _.bind(self.get_right_slide, self));
       });
+      e.stopPropagation(); 
     },
 
     hide_gallery: function(e) {
