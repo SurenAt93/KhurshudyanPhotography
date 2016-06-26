@@ -182,6 +182,8 @@ function(Backbone) {
       },
 
       open_kids: function() {
+        $('body').data('active_view', 'kids');
+        $('body').data('preload', true);
         if($('#kids .image_container').html()) {
           $('#content').children().hide();
           $('#kids').fadeIn(150);
