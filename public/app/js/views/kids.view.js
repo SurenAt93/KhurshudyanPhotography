@@ -6,13 +6,13 @@ define(
   'handlebars',
   'modernizr',
   'toucheffects',
-  'require.text!tpl/portraits.tpl',
+  'require.text!tpl/kids.tpl',
 ],
-function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
+function($, Backbone, _, Handlebars, Modernizr, Toucheffects, KidsTpl) {
   return Backbone.View.extend({
 
-    el: '#portraits',
-    template: Handlebars.compile(PortraitsTpl),
+    el: '#kids',
+    template: Handlebars.compile(KidsTpl),
     events: {
       'click .load_more': 'load_more_images',
       'click li a':       'zoom_image',
@@ -26,7 +26,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
       this.end_flag = false;
       this.slider_index = 0;
       this.preload_index = 1;
-      $.get( "/get_portraits_images_count", function(data) {
+      $.get( "/get_kids_images_count", function(data) {
         self.images_count = data.img_count/2;
         self.load_more_images();
         self.$('.image_container').mousewheel(function(e, delta) {
@@ -44,11 +44,11 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
 
     preload_images: function() {
       var self = this;
-      if($('body').data('active_view') == 'portraits' && $('body').data('preload')) {
+      if($('body').data('active_view') == 'kids' && $('body').data('preload')) {
         if(this.preload_index <= this.images_count/2) {
           require(
           [
-            'image!app/img/portraits/' + self.preload_index + '.jpg'
+            'image!app/img/kids/' + self.preload_index + '.jpg'
           ],
           function() {
             self.preload_index++;
@@ -70,7 +70,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
       }
       self.images = [];
       for (var i = this.image_index; i < images_count + this.image_index; i++) {
-        self.images.push('image!app/img/portraits/' + i + '.min.jpg');
+        self.images.push('image!app/img/kids/' + i + '.min.jpg');
       }
       if (self.images.length < 10) {
         self.end_flag = true;
@@ -136,7 +136,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
       img.fadeOut(420, function() {
         if(self.slider_index < (self.images_count - 1)) {
           self.slider_index++;
-          var img_url = 'app/img/portraits/' + self.slider_index + '.jpg';
+          var img_url = 'app/img/kids/' + self.slider_index + '.jpg';
           requirejs(
           [
             'image!' + img_url,
@@ -148,7 +148,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
             $('#gallery #left_img').show();
           });
         } else {
-          img.attr('src', 'app/img/portraits/' + (self.images_count - 1) + '.jpg')
+          img.attr('src', 'app/img/kids/' + (self.images_count - 1) + '.jpg')
             .show();
           $(e.target).hide();
           $('#gallery_preloader').fadeOut(110);
@@ -163,7 +163,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
       img.fadeOut(420, function() {
         if(self.slider_index > 1) {
           self.slider_index--;
-          var img_url = 'app/img/portraits/' + self.slider_index + '.jpg';
+          var img_url = 'app/img/kids/' + self.slider_index + '.jpg';
           requirejs(
           [
             'image!' + img_url,
@@ -174,11 +174,11 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
             img.fadeIn(420);
             $('#gallery #left_img').show();
           });
-          img.attr('src', 'app/img/portraits/' + self.slider_index + '.jpg');
+          img.attr('src', 'app/img/kids/' + self.slider_index + '.jpg');
           img.fadeIn(420);
           $('#gallery #right_img').show();
         } else {
-          img.attr('src', 'app/img/portraits/' + 1 + '.jpg')
+          img.attr('src', 'app/img/kids/' + 1 + '.jpg')
             .show();
           $(e.target).hide();
           $('#gallery_preloader').fadeOut(110);

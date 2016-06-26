@@ -181,6 +181,31 @@ function(Backbone) {
         Backbone.history.navigate('contact');        
       },
 
+      open_kids: function() {
+        if($('#kids .image_container').html()) {
+          $('#content').children().hide();
+          $('#kids').fadeIn(150);
+        } else {
+          $('#loading').fadeIn(500);
+          require(
+          [
+            'create.kids.view',
+          ], function(KidsView) {
+            KidsView
+              .then(
+                function(kidsView) {
+                  
+                },
+                function(err) {
+                  console.log(err);
+                }
+              );
+          })
+        }
+        $('.mobile-inner-nav').find('a').removeClass('selected');
+        $('.mobile-inner-nav').find('a[value=commercial]').addClass('selected');
+        Backbone.history.navigate('kids');
+      }
 
     }
   }
@@ -193,6 +218,7 @@ function(Backbone) {
     'open:commercial':            api.open_menu_tabs.open_commercial,
     'open:about':                 api.open_menu_tabs.open_about,
     'open:contact':               api.open_menu_tabs.open_contact,
+    'open:kids':                  api.open_menu_tabs.open_kids,
   })
 
   return dispatcher;

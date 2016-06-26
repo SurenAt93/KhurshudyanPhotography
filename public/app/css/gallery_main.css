@@ -18,10 +18,15 @@
 /* Header */
 .codrops-header {
 	padding: 3vmax 0 0 3vmax;
-	position: absolute;
-	width: 100%;
-	z-index: 2000;
+	/*z-index: 2000;*/
 	pointer-events: none;
+	display: inline-block;
+    -ms-transform: rotate(-38deg);
+    -webkit-transform: rotate(-38deg);
+    transform: rotate(-38deg);
+    position: absolute;
+    top: 24%;
+    left: 15%;
 }
 
 .demo-1 .codrops-header {
@@ -34,7 +39,7 @@
 	font-size: 4.65em;
 	line-height: 1;
 	font-weight: 900;
-	color: #323F5C;
+	color: #333;
 }
 
 .codrops-header p {

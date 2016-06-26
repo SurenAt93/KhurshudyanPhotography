@@ -39,6 +39,31 @@ body {
   user-select: none;           /* Non-prefixed version, currently
                                   not supported by any browser */
 }
+#commercial,
+#portraits,
+#kids {
+  background-color: white;
+}
+#commercial .load_more_section,
+#portraits .load_more_section {
+  color: black;
+}
+#nature .load_more_section,
+#gallery_o .load_more_section,
+#kids .load_more_section {
+  color: white;
+}
+#nature {
+  background-color: black;
+}
+#contact {
+  background: no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  transition-delay: 0.5s;
+}
 #content .image_container img {
   /*max-width: 70%;*/
   max-height: 400px;
@@ -48,60 +73,23 @@ body {
      -moz-box-shadow: 0 8px 36px -6px black !important;
           box-shadow: 0 8px 36px -6px black !important;*/
 }
-video { 
-  transition-duration: 0.5s;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -100;
-  transform: translateX(-50%) translateY(-50%);
-  /*background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;*/
-  background-size: cover;
-  transition: 1s opacity;
-}
-#play_video {
-  vertical-align: center;
-  cursor: pointer;
-  position:absolute;
-  width:50px;
-  height:50px;
-  border:3px solid #fff;
-  top:50%;
-  right:50%;
-  margin:-28px;
-  border-radius:30px;
-  box-shadow:1px 1px 2px rgba(0,0,0,.2);
-}
-#play_video .play_button {
-  position:absolute;
-  width:0;
-  height:0;
-  border-top:12px solid transparent;
-  border-bottom:12px solid transparent;
-  border-left:20px solid #fff;
-  top: 11px;
-  left: 15px;
-}
+
 #content {
   width: 100%;
   position: absolute;
 }
 #content > div {
   /*text-align: center;*/
-  background: no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  /*background: no-repeat center center fixed; */
+  /*-webkit-background-size: cover;*/
+  /*-moz-background-size: cover;*/
+  /*-o-background-size: cover;*/
+  /*background-size: cover;*/
   /*background-color: #fff;*/
   transition-delay: 0.5s;
   width: 100%;
   height: 100%;
-  min-height: 100%;
+  /*min-height: 100%;*/
   display: none;
 }
 #home {
@@ -216,7 +204,7 @@ a.menu_tabs_button {
 /*menu-animation*/
 .wrapper {
   position: fixed;
-  margin-left: -400px;
+  margin-left: -500px;
   transition-duration: 1s;
 }
 .remove-margin {

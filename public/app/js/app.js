@@ -33,6 +33,7 @@ require({
     'nature.view':          'views/nature.view',
     'commercial.view':      'views/commercial.view',
     'gallery.view':         'views/gallery.view',
+    'kids.view':            'views/kids.view',
 
   },
 

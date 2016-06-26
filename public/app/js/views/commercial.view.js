@@ -7,15 +7,15 @@ define(
   'modernizr',
   'toucheffects',
   'require.text!tpl/commercial.tpl',
+  'dispatcher',
 ],
-function($, Backbone, _, Handlebars, Modernizr, Toucheffects, CommercialTpl) {
+function($, Backbone, _, Handlebars, Modernizr, Toucheffects, CommercialTpl, Dispatcher) {
   return Backbone.View.extend({
 
     el: '#commercial',
     template: Handlebars.compile(CommercialTpl),
     events: {
-      'click .load_more': 'load_more_images',
-      'click li a':       'zoom_image',
+      'click li a':   'open_commercial_tabs',
     },
 
     initialize: function() {
@@ -25,7 +25,6 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, CommercialTpl) {
     render: function(img, image_index) {
       var self = this;
       this.$el.append(this.template({}));
-      this.$el.show();
       require(
       [
         'image!app/img/commercial/1.jpg',
@@ -67,9 +66,16 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, CommercialTpl) {
               }
             }
           });
+          $('#content').children().hide();
+          $('#commercial').fadeIn(150);
           $('#loading').fadeOut();
         });
       });
+    },
+
+    open_commercial_tabs: function(e) {
+      console.log(this.$(e.target))
+      Dispatcher.trigger('open:' + this.$(e.target).parents('a').attr('value'));
     }
   });
 });

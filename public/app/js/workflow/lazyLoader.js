@@ -172,4 +172,22 @@ define(
     return deffered.promise();
   });
 
+  define(
+  'create.kids.view',
+  [
+    'jquery',
+    'kids.view',
+  ],
+  function($, Kids) {
+    var deffered = $.Deferred();
+    $(document).ready(function($) {
+      try {
+        var kids_view = new Kids;
+        deffered.resolve(kids_view);
+      } catch(err) {
+        deffered.reject(err);
+      }
+    });
+    return deffered.promise();
+  });
 });

@@ -1,9 +1,10 @@
 define(
 [
+  'jquery',
   'commercial.classie',
   'commercial.dynamics',
 ],
-function(classie, dynamics) {
+function($, classie, dynamics) {
   // from: http://stackoverflow.com/a/21913575
   function getComputedTranslateY(obj) {
     if(!window.getComputedStyle) return;
@@ -86,6 +87,8 @@ function(classie, dynamics) {
     this.didscroll = false;
 
     this._init();
+    $('#loading').fadeOut();
+
   }
 
   IsoGrid.prototype.options = {

@@ -168,15 +168,15 @@ body {
 }
 
 .isolayer--deco1 .grid__link .layer:first-child:not(img) {
-	background: #ac5cf5;
+	background: rgba(255, 255, 255, 0.27);
 }
 
 .isolayer--deco1 .grid__link .layer:nth-child(2):not(img) {
-	background: #5db4eb;
+	background: rgba(28, 34, 47, 0.4);
 }
 
 .isolayer--deco1 .grid__link .layer:nth-child(3):not(img) {
-	background: #5debb4;
+	background: rgba(255, 255, 255, 0.24);
 }
 
 .isolayer--deco1 .grid__link div.layer {

@@ -26,14 +26,6 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
       this.end_flag = false;
       this.slider_index = 0;
       this.preload_index = 1;
-      requirejs(
-      [
-        'image!app/img/nature/main.jpg'
-      ],
-      function() {
-        self.$el.css('background-image',
-          'url("app/img/nature/main.jpg")');
-      });
       $.get( "/get_nature_images_count", function(data) {
         self.images_count = data.img_count/2;
         self.load_more_images();
