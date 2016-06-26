@@ -16,7 +16,7 @@
 	        <a value="home" class="menu_tabs_button">Home</a>
 	        <a value="portraits" class="menu_tabs_button">Portraits</a>
 	        <a value="nature" class="menu_tabs_button">Nature</a>
-	        <a value="when_talking_pictures" class="menu_tabs_button">When Talking Pictures</a>
+	        <a value="gallery" class="menu_tabs_button">Gallery</a>
 	        <a value="commercial" class="menu_tabs_button">Commercial</a>
 	        <a value="about" class="menu_tabs_button">About Me</a>
 	        <a value="contact" class="menu_tabs_button">Contact</a>

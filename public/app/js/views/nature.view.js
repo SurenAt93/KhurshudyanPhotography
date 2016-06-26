@@ -25,6 +25,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
       this.images = [];
       this.end_flag = false;
       this.slider_index = 0;
+      this.preload_index = 1;
       requirejs(
       [
         'image!app/img/nature/main.jpg'
@@ -34,7 +35,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
           'url("app/img/nature/main.jpg")');
       });
       $.get( "/get_nature_images_count", function(data) {
-        self.images_count = data.img_count;
+        self.images_count = data.img_count/2;
         self.load_more_images();
         self.$('.image_container').mousewheel(function(e, delta) {
           this.scrollLeft -= (delta * 30);
@@ -49,6 +50,22 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
           .html(img);
     },
 
+    preload_images: function() {
+      var self = this;
+      if($('body').data('active_view') == 'nature' && $('body').data('preload')) {
+        if(this.preload_index <= this.images_count/2) {
+          require(
+          [
+            'image!app/img/nature/' + self.preload_index + '.jpg'
+          ],
+          function() {
+            self.preload_index++;
+            self.preload_images();
+          });
+        }
+      }
+    },
+
     load_more_images: function(e) {
       this.$('.load_more_section').hide();
       this.$('.preloader-anim').css('display', 'inline-block');;
@@ -61,7 +78,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
       }
       self.images = [];
       for (var i = this.image_index; i < images_count + this.image_index; i++) {
-        self.images.push('image!app/img/nature/' + i + '.jpg');
+        self.images.push('image!app/img/nature/' + i + '.min.jpg');
       }
       if (self.images.length < 10) {
         self.end_flag = true;
@@ -72,6 +89,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
         img_001, img_002, img_003, img_004, img_005,
         img_006, img_007, img_008, img_009, img_010
       ) {
+        self.preload_images();
         var img_arr = arguments;
         for(var i = 0; i < img_arr.length; i++) {
           self.render(img_arr[i], self.image_index);
@@ -92,6 +110,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
     zoom_image: function(e) {
       var img_src = $($(e.target).parents('figure')
                       .find('img')).attr('src');
+      var img_src = img_src.substr(0, img_src.length - 8) + '.jpg';
       $('#gallery').fadeIn(200);
       $('#gallery_img').attr('src', img_src);
       $(document).bind('keydown', _.bind(this.hide_gallery, this));

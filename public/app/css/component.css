@@ -1,10 +1,10 @@
-.grid {
+.image_container.grid {
 	margin: 0 auto;
 	list-style: none;
 	/*text-align: center;*/
 }
 
-.grid li {
+.image_container.grid li {
 	margin-left: 15px;
   	margin-top: 15px;
 	display: inline-block;
@@ -15,22 +15,22 @@
 	position: relative;
 }
 
-.grid figure {
+.image_container.grid figure {
 	margin: 0;
 	position: relative;
 }
 
-.grid figure img {
+.image_container.grid figure img {
 	max-width: 100%;
 	display: block;
 	position: relative;
 }
 
-.grid figure > div {
+.image_container.grid figure > div {
 	max-height: 400px;
 }
 
-.grid figcaption {
+.image_container.grid figcaption {
 	opacity: 0.8 !important;
 	position: absolute;
 	top: 0;
@@ -40,7 +40,7 @@
 	color: #ed4e6e;
 }
 
-.grid figcaption h3 {
+.image_container.grid figcaption h3 {
 	margin: 0;
 	padding: 0;
 	color: #fff;
@@ -50,7 +50,7 @@
 	content: 'by ';
 }*/
 
-.grid figcaption a {
+.image_container.grid figcaption a {
 	text-align: center;
 	padding: 5px 10px;
 	border-radius: 2px;

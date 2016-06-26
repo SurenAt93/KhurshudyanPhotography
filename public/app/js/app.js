@@ -12,6 +12,11 @@ require({
     'modernizr':            '../vendor/modernizr/modernizr.custom',
     'toucheffects':         '../vendor/toucheffects/toucheffects',
 
+    // commercial page effects
+    'commercial.main':      '../vendor/commercial_effects/main',
+    'commercial.classie':   '../vendor/commercial_effects/classie',
+    'commercial.dynamics':  '../vendor/commercial_effects/dynamics.min',
+
     // Require.js components
     'require.text':         '../vendor/require/requrie_text',
     'image':                '../vendor/require/image',
@@ -27,7 +32,7 @@ require({
     'portraits.view':       'views/portraits.view',
     'nature.view':          'views/nature.view',
     'commercial.view':      'views/commercial.view',
-    'wtp.view':             'views/wtp.view',
+    'gallery.view':         'views/gallery.view',
 
   },
 
@@ -54,6 +59,9 @@ require({
     },
     'jquery.easing' : {
       deps: ['jquery'],
+    },
+    'commercial.classie': {
+      exports: 'classie',
     },
   },
 });

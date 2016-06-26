@@ -14,8 +14,8 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
     el: '#portraits',
     template: Handlebars.compile(PortraitsTpl),
     events: {
-      'click .load_more':       'load_more_images',
-      'click li a':             'zoom_image',
+      'click .load_more': 'load_more_images',
+      'click li a':       'zoom_image',
     },
 
     initialize: function() {
@@ -25,6 +25,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
       this.images = [];
       this.end_flag = false;
       this.slider_index = 0;
+      this.preload_index = 1;
       requirejs(
       [
         'image!app/img/portraits/main.jpg'
@@ -34,10 +35,10 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
           'url("app/img/portraits/main.jpg")');
       });
       $.get( "/get_portraits_images_count", function(data) {
-        self.images_count = data.img_count;
+        self.images_count = data.img_count/2;
         self.load_more_images();
         self.$('.image_container').mousewheel(function(e, delta) {
-          this.scrollLeft -= (delta * 80);
+          this.scrollLeft -= (delta * 30);
           e.preventDefault();
         });
       });
@@ -47,6 +48,22 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
       this.$('.image_container').append(this.template({image_index}));
       this.$(this.$('.image_container figure > div')[image_index - 1])
           .html(img);
+    },
+
+    preload_images: function() {
+      var self = this;
+      if($('body').data('active_view') == 'portraits' && $('body').data('preload')) {
+        if(this.preload_index <= this.images_count/2) {
+          require(
+          [
+            'image!app/img/portraits/' + self.preload_index + '.jpg'
+          ],
+          function() {
+            self.preload_index++;
+            self.preload_images();
+          });
+        }
+      }
     },
 
     load_more_images: function(e) {
@@ -61,7 +78,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
       }
       self.images = [];
       for (var i = this.image_index; i < images_count + this.image_index; i++) {
-        self.images.push('image!app/img/portraits/' + i + '.jpg');
+        self.images.push('image!app/img/portraits/' + i + '.min.jpg');
       }
       if (self.images.length < 10) {
         self.end_flag = true;
@@ -72,6 +89,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
         img_001, img_002, img_003, img_004, img_005,
         img_006, img_007, img_008, img_009, img_010
       ) {
+        self.preload_images();
         var img_arr = arguments;
         for(var i = 0; i < img_arr.length; i++) {
           self.render(img_arr[i], self.image_index);
@@ -92,12 +110,12 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, PortraitsTpl) {
     zoom_image: function(e) {
       var img_src = $($(e.target).parents('figure')
                       .find('img')).attr('src');
+      var img_src = img_src.substr(0, img_src.length - 8) + '.jpg';
       $('#gallery').fadeIn(200);
       $('#gallery_img').attr('src', img_src);
-      this.slider_index = this.$(e.target).attr('name');
       $(document).bind('keydown', _.bind(this.hide_gallery, this));
-      // gallery events
       $('#close_gallery').bind('click', _.bind(this.hide_gallery, this));
+      // gallery events
       $('#gallery #left_img').bind('click', _.bind(this.get_left_slide, this));
       $('#gallery #right_img').bind('click', _.bind(this.get_right_slide, this));
     },

@@ -14,6 +14,17 @@ function(Backbone) {
           $('#content').children().hide();
           $('#home').fadeIn(150);
         } else {
+          requirejs(
+          [
+            'image!app/img/main_slide/1.jpg',
+            'image!app/img/main_slide/2.jpg',
+            'image!app/img/main_slide/3.jpg',
+            'image!app/img/main_slide/4.jpg',
+            'image!app/img/main_slide/5.jpg',
+            'image!app/img/main_slide/6.jpg',
+          ],
+          function() {
+          });
           $('#loading').fadeIn(400);
           require(
           [
@@ -37,6 +48,8 @@ function(Backbone) {
       },
 
       open_portraits: function() {
+        $('body').data('active_view', 'portraits');
+        $('body').data('preload', true);
         if($('#portraits .image_container').html()) {
           $('#content').children().hide();
           $('#portraits').fadeIn(150);
@@ -63,6 +76,8 @@ function(Backbone) {
       },
 
       open_nature: function() {
+        $('body').data('active_view', 'nature');
+        $('body').data('preload', true);
         if($('#nature .image_container').html()) {
           $('#content').children().hide();
           $('#nature').fadeIn(150);
@@ -88,15 +103,17 @@ function(Backbone) {
         Backbone.history.navigate('nature');        
       },
 
-      open_when_talking_pictures: function() {
-        if($('#when_talking_pictures .image_container').html()) {
+      open_gallery: function() {
+        $('body').data('active_view', 'gallery');
+        $('body').data('preload', true);
+        if($('#gallery_o .image_container').html()) {
           $('#content').children().hide();
-          $('#when_talking_pictures').fadeIn(150);
+          $('#gallery_o').fadeIn(150);
         } else {
           $('#loading').fadeIn(500);
           require(
           [
-            'create.wtp.view',
+            'create.gallery.view',
           ], function(WtpView) {
             WtpView
               .then(
@@ -110,13 +127,13 @@ function(Backbone) {
           })
         }
         $('.mobile-inner-nav').find('a').removeClass('selected');
-        $('.mobile-inner-nav').find('a[value=when_talking_pictures]')
+        $('.mobile-inner-nav').find('a[value=gallery]')
                               .addClass('selected');
-        Backbone.history.navigate('when_talking_pictures');
+        Backbone.history.navigate('gallery');
       },
 
       open_commercial: function() {
-        if($('#commercial .image_container').html()) {
+        if($('#commercial').html()) {
           $('#content').children().hide();
           $('#commercial').fadeIn(150);
         } else {
@@ -172,7 +189,7 @@ function(Backbone) {
     'open:home':                  api.open_menu_tabs.open_home,
     'open:portraits':             api.open_menu_tabs.open_portraits,
     'open:nature':                api.open_menu_tabs.open_nature,
-    'open:when_talking_pictures': api.open_menu_tabs.open_when_talking_pictures,
+    'open:gallery':               api.open_menu_tabs.open_gallery,
     'open:commercial':            api.open_menu_tabs.open_commercial,
     'open:about':                 api.open_menu_tabs.open_about,
     'open:contact':               api.open_menu_tabs.open_contact,

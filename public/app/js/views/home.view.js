@@ -22,12 +22,12 @@ function($, Backbone, _, Handlebars, HomeTpl) {
       var self = this;
       requirejs(
       [
-        'image!app/img/portraits/3.jpg',
-        'image!app/img/portraits/38.jpg',
-        'image!app/img/commercial/21.jpg',
-        'image!app/img/nature/44.jpg',
-        'image!app/img/wtp/16.jpg',
-        'image!app/img/wtp/37.jpg',
+        'image!app/img/main_slide/1.jpg',
+        'image!app/img/main_slide/2.jpg',
+        'image!app/img/main_slide/3.jpg',
+        'image!app/img/main_slide/4.jpg',
+        'image!app/img/main_slide/5.jpg',
+        'image!app/img/main_slide/6.jpg',
       ],
       function(img1, img2, img3, img4, img5, img6) {
         $('head').append('<link rel="stylesheet" type="text/css" href="/app/css/main_slide.css">');

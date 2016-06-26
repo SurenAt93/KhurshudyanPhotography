@@ -154,17 +154,17 @@ define(
   });
   
   define(
-  'create.wtp.view',
+  'create.gallery.view',
   [
     'jquery',
-    'wtp.view',
+    'gallery.view',
   ],
-  function($, Wtp) {
+  function($, Gallery) {
     var deffered = $.Deferred();
     $(document).ready(function($) {
       try {
-        var wtp_view = new Wtp;
-        deffered.resolve(wtp_view);
+        var gallery_view = new Gallery;
+        deffered.resolve(gallery_view);
       } catch(err) {
         deffered.reject(err);
       }
