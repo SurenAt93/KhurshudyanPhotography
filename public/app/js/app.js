@@ -34,6 +34,10 @@ require({
     'commercial.view':      'views/commercial.view',
     'gallery.view':         'views/gallery.view',
     'kids.view':            'views/kids.view',
+    'wedding_day.view':     'views/wedding_day.view',
+    'product.view':         'views/product.view',
+    'photo_shoot.view':     'views/photo_shoot.view',
+    'other.view':           'views/other.view',
 
   },
 

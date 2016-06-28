@@ -190,4 +190,81 @@ define(
     });
     return deffered.promise();
   });
+
+  define(
+  'create.wedding_day.view',
+  [
+    'jquery',
+    'wedding_day.view',
+  ],
+  function($, Wedding_day) {
+    var deffered = $.Deferred();
+    $(document).ready(function($) {
+      try {
+        var wedding_day = new Wedding_day;
+        deffered.resolve(wedding_day);
+      } catch(err) {
+        deffered.reject(err);
+      }
+    });
+    return deffered.promise();
+  });
+
+  define(
+  'create.product.view',
+  [
+    'jquery',
+    'product.view',
+  ],
+  function($, Product) {
+    var deffered = $.Deferred();
+    $(document).ready(function($) {
+      try {
+        var product = new Product;
+        deffered.resolve(product);
+      } catch(err) {
+        deffered.reject(err);
+      }
+    });
+    return deffered.promise();
+  });
+
+  define(
+  'create.photo_shoot.view',
+  [
+    'jquery',
+    'photo_shoot.view',
+  ],
+  function($, Photo_shoot) {
+    var deffered = $.Deferred();
+    $(document).ready(function($) {
+      try {
+        var photo_shoot = new Photo_shoot;
+        deffered.resolve(photo_shoot);
+      } catch(err) {
+        deffered.reject(err);
+      }
+    });
+    return deffered.promise();
+  });
+
+  define(
+  'create.other.view',
+  [
+    'jquery',
+    'other.view',
+  ],
+  function($, Other) {
+    var deffered = $.Deferred();
+    $(document).ready(function($) {
+      try {
+        var other = new Other;
+        deffered.resolve(other);
+      } catch(err) {
+        deffered.reject(err);
+      }
+    });
+    return deffered.promise();
+  });
+  
 });

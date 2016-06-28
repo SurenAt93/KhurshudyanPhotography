@@ -11,19 +11,19 @@
           <p class="kids">Kids</p>
         </li>
         <li class="grid__item">
-          <a class="grid__link"><div class="layer"></div><div class="layer"></div><div class="layer"></div></a>
+          <a class="grid__link" value="photo_shoot"><div class="layer"></div><div class="layer"></div><div class="layer"></div></a>
           <p class="photoshoot">Photo Shoot</p>
         </li>
         <li class="grid__item">
-          <a class="grid__link"><div class="layer"></div><div class="layer"></div><div class="layer"></div></a>
+          <a class="grid__link" value="product"><div class="layer"></div><div class="layer"></div><div class="layer"></div></a>
           <p class="products">Products</p>
         </li>
         <li class="grid__item">
-          <a class="grid__link"><div class="layer"></div><div class="layer"></div><div class="layer"></div></a>
-          <p class="widding_day">Widding Day</p>
+          <a class="grid__link" value="wedding_day"><div class="layer"></div><div class="layer"></div><div class="layer"></div></a>
+          <p class="widding_day">Wedding Day</p>
         </li>
         <li class="grid__item">
-          <a class="grid__link"><div class="layer"></div><div class="layer"></div><div class="layer"></div></a>
+          <a class="grid__link" value="other"><div class="layer"></div><div class="layer"></div><div class="layer"></div></a>
           <p class="others">Others</p>
         </li>
         
