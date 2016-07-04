@@ -42,6 +42,8 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, ViewTpl) {
                 this.scrollLeft -= (delta * 30);
                 e.preventDefault();
               });
+              $(window).bind('resize', _.bind(self.updateCSS, self));
+              self.updateCSS();
           });
         },
 
@@ -196,7 +198,23 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, ViewTpl) {
               $('#gallery_preloader').fadeOut(110);
             }
           });
-        }
+        },
+
+        updateCSS: function() {
+          var win_height  = $(window).height();
+          var section_top = this.$('.image_container').css('top');
+          if (win_height < 944) {
+            var current_top = 50 - (944 - win_height)/22.5;
+            this.$('.image_container').css('top', current_top + '%');
+            if (win_height <= 600) {
+              this.$('.image_container').css('margin-top', -82);
+            } else {
+              this.$('.image_container').css('margin-top', -200);
+            }
+          } else {
+            this.$('.image_container').css('top', '50%');
+          }
+        },
       })
     }
   }
