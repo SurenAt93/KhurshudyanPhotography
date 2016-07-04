@@ -17,6 +17,7 @@
 
 /* Header */
 .codrops-header {
+	font-size: 64%;
 	padding: 3vmax 0 0 3vmax;
 	/*z-index: 2000;*/
 	pointer-events: none;
@@ -26,7 +27,7 @@
     transform: rotate(-38deg);
     position: absolute;
     top: 24%;
-    left: 15%;
+    left: 26%;
 }
 
 .demo-1 .codrops-header {
@@ -126,9 +127,9 @@
 .section {
 	overflow: hidden;
 	position: relative;
-	height: 100vh;
-	min-height: 800px;
-	max-height: 1200px;
+	height: 100%;
+/*	min-height: 800px;
+	max-height: 1200px;*/
 	padding: 7vmax;
 }
 
@@ -254,6 +255,10 @@
 
 .demo-2 .pater {
 	position: absolute;
+}
+
+.demo-2 {
+	height: 100%;
 }
 
 .pater::before {

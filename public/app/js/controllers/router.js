@@ -38,6 +38,11 @@ function($, Backbone, _, Dispatcher) {
         case 'portraits':
         case 'gallery':
         case 'nature':
+        case 'kids':
+        case 'other':
+        case 'wedding_day':
+        case 'photo_shoot':
+        case 'product':
           view      = tab;
           dom_elem  = '#' + tab;
           if (tab == 'gallery') {

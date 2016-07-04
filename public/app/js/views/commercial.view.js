@@ -19,7 +19,9 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, CommercialTpl, Dis
     },
 
     initialize: function() {
-      this.render();      
+      this.render();
+      $(window).bind('resize', _.bind(this.updateCSS, this));
+      this.updateCSS();
     },
 
     render: function(img, image_index) {
@@ -81,6 +83,13 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, CommercialTpl, Dis
         view: view,
         dom_elem: dom_elem,
       });
-    }
+    },
+
+    updateCSS: function() {
+      var elem = this.$('.codrops-header');
+      if ($(window).height() < 566) {
+        elem.css('left', elem.position().left-100);
+      }
+    },
   });
 });
