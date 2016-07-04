@@ -104,7 +104,7 @@ function(Backbone) {
         var view     = options.view;
         $('body').data('active_view', view);
         $('body').data('preload', true);
-        if($(dom_elem + '.image_container').html()) {
+        if($(dom_elem + ' .image_container').html()) {
           $('#content').children().hide();
           $(dom_elem).fadeIn(150);
         } else {
