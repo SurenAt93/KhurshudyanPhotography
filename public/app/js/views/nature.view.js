@@ -7,6 +7,7 @@ define(
   'modernizr',
   'toucheffects',
   'require.text!tpl/nature.tpl',
+  'view_generator',
 ],
 function($, Backbone, _, Handlebars, Modernizr, Toucheffects, NatureTpl) {
   return Backbone.View.extend({

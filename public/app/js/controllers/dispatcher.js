@@ -47,89 +47,27 @@ function(Backbone) {
         Backbone.history.navigate('home');
       },
 
-      open_portraits: function() {
-        $('body').data('active_view', 'portraits');
-        $('body').data('preload', true);
-        if($('#portraits .image_container').html()) {
+      open_contact: function() {
+        if($('#contact').html()) {
           $('#content').children().hide();
-          $('#portraits').fadeIn(150);
+          $('#contact').fadeIn(150);
         } else {
           $('#loading').fadeIn(500);
           require(
           [
-            'create.portraits.view',
-          ], function(PortraitsView) {
-            PortraitsView
-              .then(
-                function(portraitsView) {
-                  
-                },
-                function(err) {
-                  console.log(err);
-                }
-              );
-          })
+            'image!app/img/contacts/main_contacts.jpg'
+          ], function(ContactImg) {
+            $('#content').children().hide();
+            $('#contact')
+              .css('background-image',
+              'url("app/img/contacts/main_contacts.jpg")')
+              .fadeIn(150);
+            $('#loading').fadeOut(500);
+          });
         }
         $('.mobile-inner-nav').find('a').removeClass('selected');
-        $('.mobile-inner-nav').find('a[value=portraits]').addClass('selected');
-        Backbone.history.navigate('portraits');
-      },
-
-      open_nature: function() {
-        $('body').data('active_view', 'nature');
-        $('body').data('preload', true);
-        if($('#nature .image_container').html()) {
-          $('#content').children().hide();
-          $('#nature').fadeIn(150);
-        } else {
-          $('#loading').fadeIn(500);
-          require(
-          [
-            'create.nature.view',
-          ], function(NatureView) {
-            NatureView
-              .then(
-                function(natureView) {
-                  
-                },
-                function(err) {
-                  console.log(err);
-                }
-              );
-          })
-        }
-        $('.mobile-inner-nav').find('a').removeClass('selected');
-        $('.mobile-inner-nav').find('a[value=nature]').addClass('selected');
-        Backbone.history.navigate('nature');        
-      },
-
-      open_gallery: function() {
-        $('body').data('active_view', 'gallery');
-        $('body').data('preload', true);
-        if($('#gallery_o .image_container').html()) {
-          $('#content').children().hide();
-          $('#gallery_o').fadeIn(150);
-        } else {
-          $('#loading').fadeIn(500);
-          require(
-          [
-            'create.gallery.view',
-          ], function(WtpView) {
-            WtpView
-              .then(
-                function(wtpView) {
-                  
-                },
-                function(err) {
-                  console.log(err);
-                }
-              );
-          })
-        }
-        $('.mobile-inner-nav').find('a').removeClass('selected');
-        $('.mobile-inner-nav').find('a[value=gallery]')
-                              .addClass('selected');
-        Backbone.history.navigate('gallery');
+        $('.mobile-inner-nav').find('a[value=contact]').addClass('selected');
+        Backbone.history.navigate('contact');        
       },
 
       open_commercial: function() {
@@ -157,45 +95,27 @@ function(Backbone) {
         $('.mobile-inner-nav').find('a[value=commercial]').addClass('selected');
         Backbone.history.navigate('commercial');        
       },
+    },
 
-      open_contact: function() {
-        if($('#contact').html()) {
-          $('#content').children().hide();
-          $('#contact').fadeIn(150);
-        } else {
-          $('#loading').fadeIn(500);
-          require(
-          [
-            'image!app/img/contacts/main_contacts.jpg'
-          ], function(ContactImg) {
-            $('#content').children().hide();
-            $('#contact')
-              .css('background-image',
-              'url("app/img/contacts/main_contacts.jpg")')
-              .fadeIn(150);
-            $('#loading').fadeOut(500);
-          });
-        }
-        $('.mobile-inner-nav').find('a').removeClass('selected');
-        $('.mobile-inner-nav').find('a[value=contact]').addClass('selected');
-        Backbone.history.navigate('contact');        
-      },
+    open_gallery_tabs: {
 
-      open_kids: function() {
-        $('body').data('active_view', 'kids');
+      generate_view: function(options) {
+        var dom_elem = options.dom_elem;
+        var view     = options.view;
+        $('body').data('active_view', view);
         $('body').data('preload', true);
-        if($('#kids .image_container').html()) {
+        if($(dom_elem + '.image_container').html()) {
           $('#content').children().hide();
-          $('#kids').fadeIn(150);
+          $(dom_elem).fadeIn(150);
         } else {
           $('#loading').fadeIn(500);
           require(
           [
-            'create.kids.view',
-          ], function(KidsView) {
-            KidsView
+            'create.gallery_section.view',
+          ], function(GallerySectionView) {
+            GallerySectionView(view, dom_elem)
               .then(
-                function(kidsView) {
+                function(portraitsView) {
                   
                 },
                 function(err) {
@@ -205,137 +125,19 @@ function(Backbone) {
           })
         }
         $('.mobile-inner-nav').find('a').removeClass('selected');
-        $('.mobile-inner-nav').find('a[value=commercial]').addClass('selected');
-        Backbone.history.navigate('kids');
-      },
-
-      open_product: function() {
-        $('body').data('active_view', 'product');
-        $('body').data('preload', true);
-        if($('#product .image_container').html()) {
-          $('#content').children().hide();
-          $('#product').fadeIn(150);
-        } else {
-          $('#loading').fadeIn(500);
-          require(
-          [
-            'create.product.view',
-          ], function(ProductView) {
-            ProductView
-              .then(
-                function(productView) {
-                  
-                },
-                function(err) {
-                  console.log(err);
-                }
-              );
-          })
-        }
-        $('.mobile-inner-nav').find('a').removeClass('selected');
-        $('.mobile-inner-nav').find('a[value=commercial]').addClass('selected');
-        Backbone.history.navigate('product');
-      },
-
-      open_other: function() {
-        $('body').data('active_view', 'other');
-        $('body').data('preload', true);
-        if($('#other .image_container').html()) {
-          $('#content').children().hide();
-          $('#other').fadeIn(150);
-        } else {
-          $('#loading').fadeIn(500);
-          require(
-          [
-            'create.other.view',
-          ], function(OtherView) {
-            OtherView
-              .then(
-                function(otherView) {
-                  
-                },
-                function(err) {
-                  console.log(err);
-                }
-              );
-          })
-        }
-        $('.mobile-inner-nav').find('a').removeClass('selected');
-        $('.mobile-inner-nav').find('a[value=commercial]').addClass('selected');
-        Backbone.history.navigate('other');
-      },
-
-      open_wedding_day: function() {
-        $('body').data('active_view', 'wedding_day');
-        $('body').data('preload', true);
-        if($('#wedding_day .image_container').html()) {
-          $('#content').children().hide();
-          $('#wedding_day').fadeIn(150);
-        } else {
-          $('#loading').fadeIn(500);
-          require(
-          [
-            'create.wedding_day.view',
-          ], function(Wedding_dayView) {
-            Wedding_dayView
-              .then(
-                function(wedding_dayView) {
-                  
-                },
-                function(err) {
-                  console.log(err);
-                }
-              );
-          })
-        }
-        $('.mobile-inner-nav').find('a').removeClass('selected');
-        $('.mobile-inner-nav').find('a[value=commercial]').addClass('selected');
-        Backbone.history.navigate('wedding_day');
-      },
-
-      open_photo_shoot: function() {
-        $('body').data('active_view', 'photo_shoot');
-        $('body').data('preload', true);
-        if($('#photo_shoot .image_container').html()) {
-          $('#content').children().hide();
-          $('#photo_shoot').fadeIn(150);
-        } else {
-          $('#loading').fadeIn(500);
-          require(
-          [
-            'create.photo_shoot.view',
-          ], function(photo_shootView) {
-            photo_shootView
-              .then(
-                function(photo_shootView) {
-                  
-                },
-                function(err) {
-                  console.log(err);
-                }
-              );
-          })
-        }
-        $('.mobile-inner-nav').find('a').removeClass('selected');
-        $('.mobile-inner-nav').find('a[value=commercial]').addClass('selected');
-        Backbone.history.navigate('photo_shoot');
-      },
+        $('.mobile-inner-nav').find('a[value=' + view + ']').addClass('selected');
+        Backbone.history.navigate(view);
+      }
     }
   }
 
   dispatcher.on({
-    'open:home':                  api.open_menu_tabs.open_home,
-    'open:portraits':             api.open_menu_tabs.open_portraits,
-    'open:nature':                api.open_menu_tabs.open_nature,
-    'open:gallery':               api.open_menu_tabs.open_gallery,
-    'open:commercial':            api.open_menu_tabs.open_commercial,
-    'open:about':                 api.open_menu_tabs.open_about,
-    'open:contact':               api.open_menu_tabs.open_contact,
-    'open:kids':                  api.open_menu_tabs.open_kids,
-    'open:product':               api.open_menu_tabs.open_product,
-    'open:wedding_day':           api.open_menu_tabs.open_wedding_day,
-    'open:other':                 api.open_menu_tabs.open_other,
-    'open:photo_shoot':           api.open_menu_tabs.open_photo_shoot,
+    'open:home':                    api.open_menu_tabs.open_home,
+    'open:about':                   api.open_menu_tabs.open_about,
+    'open:contact':                 api.open_menu_tabs.open_contact,
+    'open:commercial':              api.open_menu_tabs.open_commercial,
+    // gallery tabs
+    'open:gallery_view_generator':  api.open_gallery_tabs.generate_view,
   })
 
   return dispatcher;

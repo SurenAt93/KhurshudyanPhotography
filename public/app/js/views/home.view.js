@@ -4,7 +4,8 @@ define(
   'backbone',
   'underscore',
   'handlebars',
-  'require.text!tpl/home.tpl',  
+  'require.text!tpl/home.tpl', 
+  'view_generator', 
 ],
 function($, Backbone, _, Handlebars, HomeTpl) {
 

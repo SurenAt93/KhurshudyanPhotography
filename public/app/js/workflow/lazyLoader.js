@@ -157,13 +157,15 @@ define(
   'create.gallery.view',
   [
     'jquery',
-    'gallery.view',
+    'view_generator',
   ],
-  function($, Gallery) {
+  function($, view_generator) {
     var deffered = $.Deferred();
     $(document).ready(function($) {
       try {
-        var gallery_view = new Gallery;
+        console.log(view_generator);
+        var gallery_view = new (view_generator.view('gallery', '#gallery_o'));
+        console.timeEnd('generation');
         deffered.resolve(gallery_view);
       } catch(err) {
         deffered.reject(err);
@@ -171,6 +173,34 @@ define(
     });
     return deffered.promise();
   });
+
+  // generation test: start
+
+  define(
+    'create.gallery_section.view',
+    [
+      'jquery',
+      'view_generator'
+    ],
+    function($, view_generator) {
+      return function(view, dom_elem) {
+        var deffered = $.Deferred();
+        $(document).ready(function($) {
+          try {
+            console.log(view_generator);
+            var gallery_view = new (view_generator.view(view, dom_elem));
+            console.timeEnd('generation');
+            deffered.resolve(gallery_view);
+          } catch(err) {
+            deffered.reject(err);
+          }
+        });
+        return deffered.promise();
+      }
+    }
+  );
+
+  // generation test: end
 
   define(
   'create.kids.view',

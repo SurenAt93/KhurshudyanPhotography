@@ -37,8 +37,31 @@ function($, Backbone, Handlebars, Dispatcher, MenuTpl) {
     },
 
     openMenuTabs: function(e) {
+      var view;
+      var dom_elem;
+      var selected_tab_name = this.$(e.target).attr('value');
       this.$('.mobile-inner-header-icon').trigger('click');
-      Dispatcher.trigger('open:' + this.$(e.target).attr('value'));
+      switch(selected_tab_name) {
+        case 'home':
+        case 'about':
+        case 'contact':
+        case 'commercial':
+          Dispatcher.trigger('open:' + selected_tab_name);
+          break;
+        case 'portraits':
+        case 'gallery':
+        case 'nature':
+          view      = selected_tab_name;
+          dom_elem  = '#' + selected_tab_name;
+          if (selected_tab_name == 'gallery') {
+            dom_elem  = '#gallery_o';
+          }
+          Dispatcher.trigger('open:gallery_view_generator', {
+            view: view,
+            dom_elem: dom_elem,
+          });
+          break;
+      }
     }
 
   });

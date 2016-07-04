@@ -39,6 +39,8 @@ require({
     'photo_shoot.view':     'views/photo_shoot.view',
     'other.view':           'views/other.view',
 
+    // Generators
+    'view_generator':       'generators/view_generator',
   },
 
   shim: {

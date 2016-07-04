@@ -74,8 +74,13 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, CommercialTpl, Dis
     },
 
     open_commercial_tabs: function(e) {
-      console.log(this.$(e.target))
-      Dispatcher.trigger('open:' + this.$(e.target).parents('a').attr('value'));
+      var selected_tab_name = this.$(e.target).parents('a').attr('value');
+      var view      = selected_tab_name;
+      var dom_elem  = '#' + selected_tab_name;
+      Dispatcher.trigger('open:gallery_view_generator', {
+        view: view,
+        dom_elem: dom_elem,
+      });
     }
   });
 });
