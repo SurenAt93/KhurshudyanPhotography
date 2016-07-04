@@ -26,7 +26,29 @@ function($, Backbone, _, Dispatcher) {
     },
 
     open_tab: function(tab) {
-      Dispatcher.trigger('open:' + tab);
+      var view;
+      var dom_elem;
+      switch(tab) {
+        case 'home':
+        case 'about':
+        case 'contact':
+        case 'commercial':
+          Dispatcher.trigger('open:' + tab);
+          break;
+        case 'portraits':
+        case 'gallery':
+        case 'nature':
+          view      = tab;
+          dom_elem  = '#' + tab;
+          if (tab == 'gallery') {
+            dom_elem  = '#gallery_o';
+          }
+          Dispatcher.trigger('open:gallery_view_generator', {
+            view: view,
+            dom_elem: dom_elem,
+          });
+          break;
+      }
     },
 
     open_image: function(tab, open_image) {

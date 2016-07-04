@@ -31,13 +31,17 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, ViewTpl) {
           this.end_flag = false;
           this.slider_index = 0;
           this.preload_index = 1;
-          $.get( "/get_" + view_name + "_images_count", function(data) {
-            self.images_count = data.img_count/2;
-            self.load_more_images();
-            self.$('.image_container').mousewheel(function(e, delta) {
-              this.scrollLeft -= (delta * 30);
-              e.preventDefault();
-            });
+          $.get("/get_images_count",
+            {
+              folder_name: view_name,
+            },
+            function(data) {
+              self.images_count = data.img_count/2;
+              self.load_more_images();
+              self.$('.image_container').mousewheel(function(e, delta) {
+                this.scrollLeft -= (delta * 30);
+                e.preventDefault();
+              });
           });
         },
 

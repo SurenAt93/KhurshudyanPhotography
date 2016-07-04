@@ -34,7 +34,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, CommercialTpl, Dis
         'image!app/img/commercial/5.jpg',
       ], function(img1, img2, img3, img4, img5) {
         var arr_img = arguments;
-        this.$('.grid li a').each(function(i, li) {
+        self.$('.grid li a').each(function(i, li) {
           self.$(li).append(arr_img[i]);
           self.$(arr_img[i]).addClass('grid__img').addClass('layer');
         });
