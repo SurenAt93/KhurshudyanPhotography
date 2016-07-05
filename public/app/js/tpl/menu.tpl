@@ -18,7 +18,7 @@
 	        <a value="nature" class="menu_tabs_button">Nature</a>
 	        <a value="gallery" class="menu_tabs_button">Gallery</a>
 	        <a value="commercial" class="menu_tabs_button">Commercial</a>
-	        <a value="about" class="menu_tabs_button">About Me</a>
+	        <!-- <a value="about" class="menu_tabs_button">About Me</a> -->
 	        <a value="contact" class="menu_tabs_button">Contact</a>
 	        <a id="fb-share-button-style-main">
 				<div class="fb-share-button" 

@@ -21,6 +21,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, ViewTpl) {
         events: {
           'click .load_more': 'load_more_images',
           'click li a':       'zoom_image',
+          'click li figure':  'zoom_image',
         },
 
         initialize: function() {
@@ -117,7 +118,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, ViewTpl) {
           $('#gallery #left_img').show();
           $('#gallery #right_img').show();
           // TODO: Optimizate image url "get" functionality
-          var img_num = this.$(e.target).parents('figure')
+          var img_num = this.$(e.target).parents('li')
                             .find('.image_index').attr('name');
           var img_src = 'app/img/' + view_name + '/' + img_num + '.jpg'
           $('#gallery').fadeIn(200);
