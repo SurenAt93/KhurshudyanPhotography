@@ -102,8 +102,8 @@ function(Backbone) {
       generate_view: function(options) {
         var dom_elem = options.dom_elem;
         var view     = options.view;
-        $('body').data('active_view', view);
-        $('body').data('preload', true);
+        $('body').attr('data-active_view', view);
+        $('body').attr('data-preload', true);
         if($(dom_elem + ' .image_container').html()) {
           $('#content').children().hide();
           $(dom_elem).fadeIn(150);

@@ -59,8 +59,8 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, ViewTpl) {
 
         preload_images: function() {
           var self = this;
-          if($('body').data('active_view') == view_name && $('body').data('preload')) {
-            if(this.preload_index <= this.images_count/2) {
+          if($('body').attr('data-active_view') == view_name && $('body').attr('data-preload')) {
+            if(this.preload_index <= this.images_count) {
               require(
               [
                 'image!app/img/' + view_name + '/' + self.preload_index + '.jpg'
@@ -115,20 +115,32 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, ViewTpl) {
         },
 
         zoom_image: function(e) {
+          var self = this;
           $('#gallery #left_img').show();
           $('#gallery #right_img').show();
           // TODO: Optimizate image url "get" functionality
+          $('#gallery').fadeIn(200);
+          $('#gallery_preloader').fadeIn(110);
+          
           var img_num = this.$(e.target).parents('li')
                             .find('.image_index').attr('name');
-          var img_src = 'app/img/' + view_name + '/' + img_num + '.jpg'
-          $('#gallery').fadeIn(200);
-          $('#gallery_img').attr('src', img_src);
-          $(document).bind('keydown', _.bind(this.hide_gallery, this));
-          $('#close_gallery').bind('click', _.bind(this.hide_gallery, this));
-          // gallery events
-          $('#gallery #left_img').bind('click', _.bind(this.get_left_slide, this));
-          $('#gallery #right_img').bind('click', _.bind(this.get_right_slide, this));
-          Backbone.history.navigate(view_name + '/' + img_num);
+          console.log('slider_index: ---> ', this.slider_index);
+          var img_src = 'app/img/' + view_name + '/' + img_num + '.jpg';
+          require(
+          [
+            'image!' + img_src,
+          ],
+          function() {
+            $('#gallery_img').attr('src', img_src);
+            $(document).bind('keydown', _.bind(self.hide_gallery, self));
+            $('#close_gallery').bind('click', _.bind(self.hide_gallery, self));
+            $('#gallery_preloader').fadeOut(110);
+            // gallery events
+            $('#gallery #left_img').bind('click', _.bind(self.get_left_slide, self));
+            $('#gallery #right_img').bind('click', _.bind(self.get_right_slide, self));
+            Backbone.history.navigate(view_name + '/' + img_num);
+          });
+          e.stopPropagation();
         },
 
         hide_gallery: function(e) {
@@ -149,11 +161,11 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, ViewTpl) {
         },
 
         get_right_slide: function(e) {
-          $('#gallery_preloader').fadeIn(110);
-          var img = $(e.target).parent().find('img');
           var self = this;
-          img.fadeOut(420, function() {
-            if(self.slider_index < (self.images_count - 1)) {
+          if(self.slider_index < (self.images_count - 1)) {
+            $('#gallery_preloader').fadeIn(110);
+            var img = $(e.target).parent().find('img');
+            img.fadeOut(420, function() {
               self.slider_index++;
               var img_url = 'app/img/' + view_name + '/' + self.slider_index + '.jpg';
               requirejs(
@@ -166,21 +178,18 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, ViewTpl) {
                 img.fadeIn(420);
                 $('#gallery #left_img').show();
               });
-            } else {
-              img.attr('src', 'app/img/' + view_name + '/' + (self.images_count - 1) + '.jpg')
-                .show();
-              $(e.target).hide();
-              $('#gallery_preloader').fadeOut(110);
-            }
-          });
+            });
+          } else {
+            $(e.target).hide();
+          }
         },
 
         get_left_slide: function(e) {
-          $('#gallery_preloader').fadeIn(110);
-          var img = $(e.target).parent().find('img');
           var self = this;
-          img.fadeOut(420, function() {
-            if(self.slider_index > 1) {
+          if(self.slider_index > 1) {
+            $('#gallery_preloader').fadeIn(110);
+            var img = $(e.target).parent().find('img');
+            img.fadeOut(420, function() {
               self.slider_index--;
               var img_url = 'app/img/' + view_name + '/' + self.slider_index + '.jpg';
               requirejs(
@@ -193,16 +202,10 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, ViewTpl) {
                 img.fadeIn(420);
                 $('#gallery #left_img').show();
               });
-              img.attr('src', 'app/img/' + view_name + '/' + self.slider_index + '.jpg');
-              img.fadeIn(420);
-              $('#gallery #right_img').show();
-            } else {
-              img.attr('src', 'app/img/' + view_name + '/' + 1 + '.jpg')
-                .show();
-              $(e.target).hide();
-              $('#gallery_preloader').fadeOut(110);
-            }
-          });
+            });
+          } else {
+            $(e.target).hide();
+          }
         },
 
         updateCSS: function() {
