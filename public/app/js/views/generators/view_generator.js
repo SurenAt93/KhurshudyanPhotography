@@ -114,9 +114,12 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, ViewTpl) {
         },
 
         zoom_image: function(e) {
-          var img_src = $($(e.target).parents('figure')
-                          .find('img')).attr('src');
-          var img_src = img_src.substr(0, img_src.length - 8) + '.jpg';
+          $('#gallery #left_img').show();
+          $('#gallery #right_img').show();
+          // TODO: Optimizate image url "get" functionality
+          var img_num = this.$(e.target).parents('figure')
+                            .find('.image_index').attr('name');
+          var img_src = 'app/img/' + view_name + '/' + img_num + '.jpg'
           $('#gallery').fadeIn(200);
           $('#gallery_img').attr('src', img_src);
           $(document).bind('keydown', _.bind(this.hide_gallery, this));
@@ -124,6 +127,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, ViewTpl) {
           // gallery events
           $('#gallery #left_img').bind('click', _.bind(this.get_left_slide, this));
           $('#gallery #right_img').bind('click', _.bind(this.get_right_slide, this));
+          Backbone.history.navigate(view_name + '/' + img_num);
         },
 
         hide_gallery: function(e) {

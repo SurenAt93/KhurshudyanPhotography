@@ -14,10 +14,10 @@ function($, Backbone, _, Dispatcher) {
     },
 
     routes: {
-      '':             'start',
-      '/':            'start',
-      ':tab':         'open_tab',
-      ':tab/img_num': 'open_image',
+      '':                 'start',
+      '/':                'start',
+      ':tab':             'open_tab',
+      ':tab/:open_image': 'open_image',
     },
 
     start: function() {
@@ -57,7 +57,28 @@ function($, Backbone, _, Dispatcher) {
     },
 
     open_image: function(tab, open_image) {
-      Dispatcher.trigger('open:' + tab);
+      this.tab = tab;
+      var self = this;
+      $('#loading').fadeIn(500);
+      var image_url = 'app/img/' + tab + '/' + open_image + '.jpg';
+      this.open_tab(this.tab);
+      require(
+      [
+        'image!' + image_url
+      ],
+      function() {
+        $('#gallery #left_img').hide();
+        $('#gallery #right_img').hide();
+        $('#gallery').fadeIn(200);
+        $('#gallery_img').attr('src', 'app/img/' + tab + '/' + open_image + '.jpg');
+        $('#loading').fadeOut(500);
+        $('#close_gallery').bind('click', _.bind(self.hide_gallery, self));
+      })
+    },
+    hide_gallery: function() {
+      $('#gallery').fadeOut(200);
+      // $('#close_gallery').off('click');
+      $('#gallery_img').attr('src', '');
     }
   });
 
