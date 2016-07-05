@@ -124,6 +124,16 @@ a.menu_tabs_button {
   margin-left: -75px;
 
 }
+#main_preloader {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
+  border-color: #001f3f;
+}
 .object{
   width: 8px;
   height: 50px;
@@ -540,22 +550,12 @@ transform: translateY(-4px) rotate(0deg);
   background-image: url('../img/next.png');
 }
 
-#main_preloader {
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  top: 50%;
-  left: 50%;
-  margin-top: -50px;
-  margin-left: -50px;
-  border-color: #001f3f;
-}
 #gallery #gallery_preloader {
   display: none;
-  width: 80px;
+  width: 40px;
+  height: 40px;
   border-left: 3px solid #FF4136;
   border-right: 3px solid #FF4136;
-  height: 80px;
   left: 50%;
   top: 50%;
   margin-top: -40px;
