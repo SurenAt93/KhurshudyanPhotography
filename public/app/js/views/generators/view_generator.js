@@ -50,7 +50,7 @@ function($, Backbone, _, Handlebars, Modernizr, Toucheffects, ViewTpl) {
         render: function(img, image_index) {
           this.$('.image_container').append(this.template({
             image_index: image_index,
-            view_name:   view_name,
+            view:        view_name,
           }));
           this.$(this.$('.image_container figure > div')[image_index - 1])
               .html(img);

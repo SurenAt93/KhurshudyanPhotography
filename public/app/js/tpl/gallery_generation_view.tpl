@@ -8,8 +8,8 @@
         <a class="fb-share-button-style" href="https://www.facebook.com/dialog/feed?app_id=138460513240067
             &amp;display=page&amp;caption=https://khurshudyan.com
             &amp;redirect_uri=https://www.facebook.com
-            &amp;link=khurshudyan.com/{{view}}/{{image_index}}
-            &amp;picture=khurshudyan.com/app/img/{{view}}/{{image_index}}.jpg
+            &amp;link=khurshudyan.com/#{{view}}/{{image_index}}
+            &amp;picture=khurshudyan.com/app/img/{{view}}/{{image_index}}.min.jpg
             " target="_blank">
           Share on Facebook
         </a>

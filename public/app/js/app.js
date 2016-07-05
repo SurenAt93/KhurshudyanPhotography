@@ -38,9 +38,8 @@ require({
     'product.view':         'views/product.view',
     'photo_shoot.view':     'views/photo_shoot.view',
     'other.view':           'views/other.view',
-
     // Generators
-    'view_generator':       'generators/view_generator',
+    'view_generator':       'views/generators/view_generator',
   },
 
   shim: {
